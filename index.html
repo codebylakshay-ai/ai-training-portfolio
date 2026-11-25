@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Lakshay Varshney: AI Training Specialist and AI Agent Builder. 2+ years on Outlier across text, image and audio projects.">
+<style>body{margin:0}</style>
+<title>Lakshay Varshney · AI Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a live "sample task" card as the hero — the page looks like the work itself. */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#141A26; --muted:#5A6476; --line:#DCE1EA;
+  --accent:#2747C9; --accent-soft:#E6EBFB; --mark:#FFE38A; --good:#1C7C54; --warn:#B4561B;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E121A; --surface:#161C27; --ink:#E7EBF3; --muted:#97A1B4; --line:#283143;
+  --accent:#8EA6FF; --accent-soft:#1D2742; --mark:#6B5A1A; --good:#5BC79A; --warn:#F0A06A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E121A; --surface:#161C27; --ink:#E7EBF3; --muted:#97A1B4; --line:#283143;
+  --accent:#8EA6FF; --accent-soft:#1D2742; --mark:#6B5A1A; --good:#5BC79A; --warn:#F0A06A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);
+  padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+.label{font:500 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+mark{background:var(--mark);color:inherit;padding:0 .15em;border-radius:2px}
+
+/* Nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px;flex-wrap:wrap}
+.brand{font:700 1.05rem var(--display)}
+.brand span{color:var(--accent)}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:.92rem}
+nav a:hover{color:var(--ink)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-block:40px 64px}
+.hero > *{min-width:0}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 .8rem var(--mono);color:var(--good);
+  background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--good);display:block}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4rem);font-weight:700;letter-spacing:-.025em;margin-top:20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lede{color:var(--muted);font-size:1.1rem;max-width:34rem;margin-top:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;font:600 .95rem var(--body);padding:12px 20px;border-radius:8px;text-decoration:none;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{color:var(--accent);background:transparent}
+
+/* Sample task card */
+.task{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  box-shadow:0 18px 40px -24px rgba(20,30,60,.35)}
+.task-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tabs{display:flex;gap:4px}
+.tabs button{font:500 .78rem var(--mono);border:1px solid transparent;background:none;color:var(--muted);padding:6px 10px;border-radius:6px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent-soft);color:var(--accent);border-color:var(--line)}
+.task-id{font:400 .72rem var(--mono);color:var(--muted)}
+.task-body{padding:18px 16px;display:grid;gap:14px}
+.field .label{display:block;margin-bottom:6px}
+.field p{font-size:.95rem}
+.input-box{font:400 .85rem/1.55 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;color:var(--ink)}
+.rubric{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;font-size:.9rem}
+.dots{display:flex;gap:4px}
+.dots b{width:14px;height:14px;border-radius:3px;background:var(--line);display:block}
+.dots b.on{background:var(--accent)}
+.verdict{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:12px;border-top:1px dashed var(--line);flex-wrap:wrap}
+.chip{font:500 .75rem var(--mono);padding:4px 10px;border-radius:999px;border:1px solid currentColor}
+.chip.good{color:var(--good)} .chip.warn{color:var(--warn)}
+
+/* Sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:10px;margin-bottom:32px;max-width:44rem}
+.sec-head p{color:var(--muted)}
+
+/* Facts strip */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.fact{padding:20px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0}
+.fact strong{display:block;font:700 1.9rem/1 var(--display);margin-bottom:8px;font-variant-numeric:tabular-nums}
+.fact span{color:var(--muted);font-size:.9rem}
+
+/* Experience */
+.role{display:grid;grid-template-columns:220px 1fr;gap:32px}
+.role > *{min-width:0}
+.role-meta h3{font-size:1.35rem}
+.role-meta p{color:var(--muted);font-size:.92rem;margin-top:6px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:10px;align-content:start}
+.proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.modality{font:500 .7rem var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.proj p{color:var(--muted);font-size:.93rem}
+.proj ul{margin:0;padding-left:18px;font-size:.9rem;display:grid;gap:4px}
+
+/* Agents */
+.agents{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.agents > *{min-width:0}
+.pipeline{font:400 .82rem/1.6 var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;overflow-x:auto}
+.pipeline .step{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.pipeline .step:last-child{border-bottom:0}
+.pipeline .n{color:var(--accent)}
+.pipeline .c{color:var(--muted)}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.list li{display:grid;gap:2px}
+.list strong{font-weight:600}
+.list span{color:var(--muted);font-size:.93rem}
+
+/* Contribution */
+.offer{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.offer div{padding:20px;border-top:3px solid var(--accent);background:var(--surface);border-radius:0 0 10px 10px;display:grid;gap:8px;align-content:start}
+.offer p{color:var(--muted);font-size:.93rem}
+.targets{margin-top:24px;color:var(--muted);font-size:.95rem}
+.targets b{color:var(--ink)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.skills h3{font-size:1rem;margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:400 .8rem var(--mono);padding:4px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.contact > *{min-width:0}
+.contact-box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 20px}
+.c-row{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.c-row:last-child{border-bottom:0}
+.c-row .v{overflow-wrap:anywhere}
+footer{padding-block:28px 40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+@media (max-width:860px){
+  .hero,.agents,.contact,.role{grid-template-columns:1fr;gap:28px}
+  .projects,.offer,.skills{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .fact:nth-child(3){border-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .task-body{transition:opacity .2s ease}
+  .task-body.swap{opacity:.25}
+}
+</style>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">Lakshay Varshney<span>.</span></div>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#agents">AI Agents</a></li>
+      <li><a href="#contribute">How I'd contribute</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="status"><i></i>Open to platform roles</span>
+      <h1>I train AI models, and now I want to help <em>build the platforms</em> that train them.</h1>
+      <p class="lede">AI Training Specialist with 2+ years of hands-on work on Outlier across text, image-to-text and audio-to-text projects for multiple client organizations. I also design and build AI agents. I'm looking to join platform teams like Outlier and Mercor directly, in quality, project operations or task design.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="#experience">See my project work</a>
+      </div>
+    </div>
+
+    <div class="task" aria-label="Example of the kind of evaluation task I work on">
+      <div class="task-head">
+        <div class="tabs" role="tablist">
+          <button id="tab-text" role="tab" aria-selected="true" data-k="text">Text</button>
+          <button id="tab-image" role="tab" aria-selected="false" data-k="image">Image→Text</button>
+          <button id="tab-audio" role="tab" aria-selected="false" data-k="audio">Audio→Text</button>
+        </div>
+        <span class="task-id" id="task-id">sample · rlhf-eval</span>
+      </div>
+      <div class="task-body" id="task-body"></div>
+    </div>
+  </header>
+
+  <div class="facts" role="list">
+    <div class="fact" role="listitem"><strong>2+ yrs</strong><span>AI training &amp; evaluation</span></div>
+    <div class="fact" role="listitem"><strong>3</strong><span>Modalities: text, image, audio</span></div>
+    <div class="fact" role="listitem"><strong>Multi</strong><span>Client organizations served via Outlier</span></div>
+    <div class="fact" role="listitem"><strong>Agents</strong><span>Designed &amp; built with LLM tool use</span></div>
+  </div>
+
+  <section id="experience">
+    <div class="sec-head">
+      <span class="label">Experience</span>
+      <h2>Two years inside the training loop</h2>
+      <p>I've worked on many projects on Outlier, each with its own guidelines, rubrics and quality bar. These are the ones that shaped how I think about data quality.</p>
+    </div>
+
+    <div class="role">
+      <div class="role-meta">
+        <h3>Outlier AI</h3>
+        <p>AI Training Contributor<br>2+ years · Remote</p>
+        <p>Projects for multiple AI organizations</p>
+      </div>
+      <div class="projects">
+        <article class="proj">
+          <div class="proj-top"><h3>Terminal-Bench</h3><span class="modality">Agents · Code</span></div>
+          <p>Designed hard, realistic command-line tasks used to benchmark and train AI agents working in a terminal.</p>
+          <ul>
+            <li>Wrote task instructions with one clear, checkable outcome</li>
+            <li>Built reference solutions and automated tests to verify agent results</li>
+            <li>Made tasks that hold up against shortcuts and lucky guesses</li>
+          </ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Melvin's Mansion</h3><span class="modality">Rubric eval</span></div>
+          <p>Rubric-based evaluation of model outputs, known on Outlier for its strict rules and tight timers.</p>
+          <ul>
+            <li>Designed prompts and scenarios to find where models fail specific criteria</li>
+            <li>Graded model outputs against detailed, strict rubrics</li>
+            <li>Delivered accurate work under tight time limits</li>
+          </ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Aether</h3><span class="modality">Text · LLM</span></div>
+          <p>Evaluated and improved model responses against detailed project guidelines.</p>
+          <ul>
+            <li>Rated responses on accuracy, helpfulness, safety and instruction following</li>
+            <li>Wrote clear justifications for every rating</li>
+            <li>Kept up with guideline updates between task batches</li>
+          </ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Image to Text</h3><span class="modality">Vision</span></div>
+          <p>Wrote and reviewed image descriptions used to train and evaluate vision-language models.</p>
+          <ul>
+            <li>Detailed, grounded captions with no invented details</li>
+            <li>Flagged hallucinated objects, counts and text in model outputs</li>
+            <li>Checked spatial relationships and visible text (OCR)</li>
+          </ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Audio to Text</h3><span class="modality">Speech</span></div>
+          <p>Transcribed and corrected audio for speech recognition training data.</p>
+          <ul>
+            <li>Verbatim transcription with speaker labels and timestamps</li>
+            <li>Handled accents, overlapping speech and background noise</li>
+            <li>Followed tagging conventions for non-speech events</li>
+          </ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Other projects</h3><span class="modality">Mixed</span></div>
+          <p>Many more projects across the training pipeline.</p>
+          <ul>
+            <li>Preference ranking between model responses (RLHF)</li>
+            <li>Writing prompt and ideal-response pairs (SFT)</li>
+            <li>Fact-checking and reviewing other contributors' tasks</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="agents">
+    <div class="agents">
+      <div>
+        <div class="sec-head">
+          <span class="label">AI Agents</span>
+          <h2>I also build the systems that use these models</h2>
+          <p>Beyond training data, I design and build AI agents: LLM-driven workflows that plan, call tools and check their own output. Knowing how models are trained helps me see where agents will fail, and building agents shows me what good training data needs to cover. On Outlier's Terminal-Bench project I wrote the tasks that test agents like these.</p>
+        </div>
+        <ul class="list">
+          <li><strong>Tool calling &amp; function design</strong><span>Defining tools, schemas and the instructions that make agents use them correctly.</span></li>
+          <li><strong>Multi-step workflows</strong><span>Agents that break a task into steps, act, and verify results before moving on.</span></li>
+          <li><strong>Retrieval (RAG)</strong><span>Grounding answers in documents so outputs stay factual.</span></li>
+          <li><strong>Evaluation</strong><span>Test sets and rubrics to measure agent quality, using the same skills I use in AI training.</span></li>
+        </ul>
+      </div>
+      <div class="pipeline" aria-label="How an agent I build typically works">
+        <div class="label" style="margin-bottom:10px">Typical agent loop</div>
+        <div class="step"><span class="n">01</span><span>receive task <span class="c">// user goal + context</span></span></div>
+        <div class="step"><span class="n">02</span><span>plan steps <span class="c">// decompose the goal</span></span></div>
+        <div class="step"><span class="n">03</span><span>call tools <span class="c">// search, APIs, code, files</span></span></div>
+        <div class="step"><span class="n">04</span><span>check output <span class="c">// against a rubric</span></span></div>
+        <div class="step"><span class="n">05</span><span>retry or return <span class="c">// with sources</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contribute">
+    <div class="sec-head">
+      <span class="label">Why the platform side</span>
+      <h2>How I'd contribute to Outlier, Mercor and similar platforms</h2>
+      <p>After two years as a contributor I know where tasks get confusing, where quality slips and what keeps good contributors on a project. I want to fix those things from the inside.</p>
+    </div>
+    <div class="offer">
+      <div><h3>Quality &amp; review</h3><p>Reviewing contributor work, calibrating raters, catching low-quality or AI-generated submissions and giving useful feedback.</p></div>
+      <div><h3>Task &amp; rubric design</h3><p>Writing clear guidelines, examples and rubrics that contributors can follow and that clients can trust.</p></div>
+      <div><h3>Project ops &amp; tooling</h3><p>Onboarding contributors, running projects across modalities and building agent-based tools that speed up QA.</p></div>
+    </div>
+    <p class="targets">Roles I'm interested in: <b>Quality Lead / Reviewer</b>, <b>Project Operations</b>, <b>Task &amp; Guideline Writer</b>, <b>AI Trainer (in-house)</b>, <b>Agent / Evaluation Engineer</b>.</p>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <span class="label">Skills</span>
+      <h2>What I work with</h2>
+    </div>
+    <div class="skills">
+      <div><h3>AI training</h3><div class="tags"><span>RLHF</span><span>SFT</span><span>Preference ranking</span><span>Rubric scoring</span><span>Red-teaming</span><span>Fact-checking</span></div></div>
+      <div><h3>Modalities</h3><div class="tags"><span>LLM text</span><span>Image captioning</span><span>OCR review</span><span>Transcription</span><span>Speaker labeling</span></div></div>
+      <div><h3>Agents &amp; tools</h3><div class="tags"><span>LLM APIs</span><span>Tool calling</span><span>RAG</span><span>Prompt engineering</span><span>Agent evaluation</span><span>Agent benchmark tasks</span></div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div class="sec-head" style="margin:0">
+        <span class="label">Contact</span>
+        <h2>Let's talk about your next project</h2>
+        <p>I'm available for full-time or contract roles on AI training platform teams. Remote friendly.</p>
+      </div>
+      <div class="contact-box">
+        <div class="c-row"><span class="label">Email</span><span class="v">codebylakshay@gmail.com</span></div>
+        <div class="c-row"><span class="label">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/lakshay-varshney/" target="_blank" rel="noopener">linkedin.com/in/lakshay-varshney</a></span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Lakshay Varshney · AI Training Specialist &amp; Agent Builder</footer>
+</div>
+
+<script>
+const samples = {
+  text: {
+    id: "sample · rlhf-eval",
+    prompt: "Explain why the sky is blue to a 10-year-old in under 80 words.",
+    response: "Sunlight has all colors. When it hits air, <mark>blue light scatters the most</mark> because its waves are short, so blue reaches your eyes from every direction.",
+    rubric: [["Accuracy",5],["Instruction following",5],["Tone for audience",4],["Concision",5]],
+    verdict: ["Preferred over B", "good"], note: "Meets word limit · no errors"
+  },
+  image: {
+    id: "sample · vlm-caption",
+    prompt: "[image] A kitchen counter with fruit and a handwritten note.",
+    response: "Three bananas and <mark>two red apples</mark> sit beside a note reading “Buy milk”. A <mark>coffee mug</mark> is in the background.",
+    rubric: [["Grounded in image",3],["Object counts",2],["Text (OCR) correct",5],["Completeness",4]],
+    verdict: ["Hallucination flagged", "warn"], note: "Only one apple visible · no mug"
+  },
+  audio: {
+    id: "sample · asr-transcript",
+    prompt: "[audio 00:14] Two speakers, café background noise.",
+    response: "<b>S1</b> [00:02] So are we still on for Friday? <b>S2</b> [00:05] Yeah, <mark>[inaudible]</mark> around six. [laughs]",
+    rubric: [["Verbatim accuracy",5],["Speaker labels",5],["Timestamps",4],["Tag conventions",5]],
+    verdict: ["Approved", "good"], note: "Tags follow guideline v3"
+  }
+};
+const body = document.getElementById("task-body");
+const idEl = document.getElementById("task-id");
+function render(k){
+  const s = samples[k];
+  idEl.textContent = s.id;
+  body.innerHTML = `
+    <div class="field"><span class="label">Input</span><div class="input-box">${s.prompt}</div></div>
+    <div class="field"><span class="label">Model output</span><p>${s.response}</p></div>
+    <div class="rubric">${s.rubric.map(([n,v]) =>
+      `<div class="row"><span>${n}</span><span class="dots" aria-label="${v} of 5">${[1,2,3,4,5].map(i=>`<b class="${i<=v?'on':''}"></b>`).join("")}</span></div>`).join("")}</div>
+    <div class="verdict"><span class="chip ${s.verdict[1]}">${s.verdict[0]}</span><span class="task-id">${s.note}</span></div>`;
+}
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-selected", x===b));
+  body.classList.add("swap");
+  setTimeout(() => { render(b.dataset.k); body.classList.remove("swap"); }, 150);
+}));
+render("text");
+</script>
+
+</html>
